@@ -2,11 +2,12 @@
 
 srcフォルダに.envファイルを作成
 ```
-GEMINI_PROMPT = 'ここにプロンプトを記載'
+GEMINI_PROMPT = 'ここに簡単なプロンプト(語尾や口調)を記載'
 DISCORD_TOKEN = 'YOUR_DISCORDBOT_TOKEN'
 GEMINI_API_KEY = 'YOUR_GEMINI_API_KEY'
 ```
-
+※本格的なプロンプト設定はAISTUDIOを推奨します。
+https://aistudio.google.com/app/prompts/new_chat
 
 # Google Gemini用のChatBot機能
 チュートリアル: Gemini API のスタートガイド

@@ -9,7 +9,6 @@ GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
 GEMINI_PROMPT = os.getenv('GEMINI_PROMPT')
 def gemini_onetimetext_api(prompt, model_name='gemini-1.5-flash'):
     genai.configure(api_key=GEMINI_API_KEY) 
-    print(GEMINI_PROMPT)
     # モデル設定
     model = genai.GenerativeModel(model_name)
     response = model.generate_content(GEMINI_PROMPT + "\n" + prompt)

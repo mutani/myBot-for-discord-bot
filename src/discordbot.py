@@ -36,7 +36,6 @@ async def getGeminiModel(ctx):
     app_commands.Choice(name="ChatBotPro", value="gemini-1.5-pro")
 ])
 async def chatbot(interaction: discord.Interaction, mode: str, message: str):
-    print(f"mode: {mode}")
     await interaction.response.defer()
     response_message = gemini_onetimetext_api(message, mode)
     await interaction.followup.send(f"{response_message.data}") 

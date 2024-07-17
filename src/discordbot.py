@@ -40,5 +40,4 @@ async def chatbot(interaction: discord.Interaction, mode: str, message: str):
     response_message = gemini_onetimetext_api(message, mode)
     await interaction.followup.send(f"{response_message.data}") 
 
-# Botのトークンを設定して起動する
 bot.run(os.getenv('DISCORD_TOKEN'))

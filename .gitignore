@@ -2,7 +2,6 @@
 *.pyc
 __pycache__/
 
-# Virtual Environment
 venv/
-
 memo/
+.env

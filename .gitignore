@@ -5,4 +5,7 @@ __pycache__/
 venv/
 memo/
 output/
+dist/
+build/
 .env
+discordbot.exe.spec

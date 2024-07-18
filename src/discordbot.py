@@ -35,7 +35,7 @@ async def getGeminiModel(ctx):
 @app_commands.describe(mode="Select mode")
 @app_commands.choices(mode=[
     app_commands.Choice(name="ChatBot", value="gemini-1.5-flash"),
-    app_commands.Choice(name="ChatBotPro", value="gemini-1.5-pro")
+    app_commands.Choice(name="ChatBotPro", value="gemini-pro")
 ])
 async def chatbot(interaction: discord.Interaction, mode: str, message: str):
     await interaction.response.defer()
@@ -59,11 +59,10 @@ async def translate(interaction: discord.Interaction, mode: str, message: str):
 
     await interaction.followup.send(f"{response_message.data}") 
 
-@tree.command(name="draw", description="stabilityai/sdxl-turboを使用して画像を生成します(promptは英文を推奨します)")
-async def draw(interaction: discord.Interaction, message: str):
+@tree.command(name="draw_sdxl", description="stabilityai/sdxl-turboを使用して画像を生成します(promptは英文を推奨します)")
+async def draw_sdxl(interaction: discord.Interaction, message: str):
     await interaction.response.defer()
     state = SDXL_TURBO_STATE
-    print(state)
     if state == "on":
         image = sdxl_turbo(message)
         image_path = SDXL_TURBO_TEMPORALY_STORAGE

@@ -12,3 +12,8 @@ https://aistudio.google.com/app/prompts/new_chat
 # Google Gemini用のChatBot機能
 チュートリアル: Gemini API のスタートガイド
 https://ai.google.dev/gemini-api/docs/get-started/tutorial?lang=python&hl=ja
+
+# コマンド一覧
+* `/chat [message]` 'gemini-1.5-flash'でのonetimeチャット
+* `/chatbot [model] [message]` モデル選択ができるonetimeチャット
+* `/getGeminiModel` geminiの使用可能モデルを参照

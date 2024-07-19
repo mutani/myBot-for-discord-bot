@@ -6,9 +6,12 @@ from geminiApi import gemini_onetimetext_api, get_gemini_models, translate_to_en
 from sdxl import sdxl_turbo
 
 #config
-SDXL_TURBO_STATE = config.SDXL_TURBO_STATE
 DISCORD_TOKEN = config.DISCORD_TOKEN
+SDXL_TURBO_STATE = config.SDXL_TURBO_STATE
 SDXL_TURBO_TEMPORALY_STORAGE = config.SDXL_TURBO_TEMPORALY_STORAGE
+SDXL_ANIME_STATE = config.SDXL_ANIME_STATE
+SDXL_ANIME_TEMPORALY_STORAGE = config.SDXL_ANIME_TEMPORALY_STORAGE
+
 
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='/', intents=intents)
@@ -66,9 +69,28 @@ async def draw_sdxl(interaction: discord.Interaction, message: str):
     if state == "on":
         image = sdxl_turbo(message)
         image_path = SDXL_TURBO_TEMPORALY_STORAGE
-        image.save(image_path)
-        with open(image_path, "rb") as file:
-            await interaction.followup.send(file=discord.File(file, image_path))
+        if image is not None:
+            image.save(image_path)
+            with open(image_path, "rb") as file:
+                await interaction.followup.send(file=discord.File(file, image_path))
+        else:
+            await interaction.followup.send(f"エラーが発生しました")
+    else:
+        await interaction.followup.send(f"draw機能は利用できません")
+
+@tree.command(name="draw_sdxl_anime", description="ntc-ai/SDXL-LoRA-slider.animeを使用して画像を生成")
+async def draw_sdxl_anime(interaction: discord.Interaction, message: str):
+    await interaction.response.defer()
+    state = SDXL_ANIME_STATE
+    if state == "on":
+        image = sdxl_turbo(message)
+        image_path = SDXL_ANIME_TEMPORALY_STORAGE
+        if image is not None:
+            image.save(image_path)
+            with open(image_path, "rb") as file:
+                await interaction.followup.send(file=discord.File(file, image_path))
+        else:
+            await interaction.followup.send(f"エラーが発生しました")
     else:
         await interaction.followup.send(f"draw機能は利用できません")
 

@@ -7,5 +7,6 @@ memo/
 output/
 dist/
 build/
+tests/
 .env
 discordbot.exe.spec
